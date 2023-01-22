@@ -3,20 +3,17 @@ import { useState } from "react";
 // import library
 import { PlusIcon } from "@heroicons/react/24/solid";
 
-
-const CustomForm = ({addTask}) => {
-    const [task, setTask] = useState("");
-    
-
+const CustomForm = ({ addTask }) => {
+  const [task, setTask] = useState("");
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
     addTask({
-        name: task,
-        checked: false,
-        id: Date.now()
-    })
-    setTask("")
+      name: task,
+      checked: false,
+      id: Date.now(),
+    });
+    setTask("");
   };
 
   return (
@@ -34,7 +31,7 @@ const CustomForm = ({addTask}) => {
           placeholder="Enter task"
         />
         <label htmlFor="task" className="label">
-          Enter task
+          Введите задачу...
         </label>
       </div>
 

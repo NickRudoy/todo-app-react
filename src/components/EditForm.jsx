@@ -8,26 +8,28 @@ const EditForm = ({ editedTask, updateTask, closeEditMode }) => {
 
   useEffect(() => {
     const closeModalIfEscaped = (e) => {
-        e.key === 'Escape' && closeEditMode();
-    }
+      e.key === "Escape" && closeEditMode();
+    };
 
-    window.addEventListener("keydown", closeModalIfEscaped)
+    window.addEventListener("keydown", closeModalIfEscaped);
 
     return () => {
-        window.removeEventListener("keydown", closeModalIfEscaped)
-    }
-  }, [closeEditMode])
+      window.removeEventListener("keydown", closeModalIfEscaped);
+    };
+  }, [closeEditMode]);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    updateTask({ ... editedTask, name: updatedTaskName});
+    updateTask({ ...editedTask, name: updatedTaskName });
   };
 
   return (
-    <div 
-    role="dialog" 
-    aria-labelledby="editTask"
-    onClick={(e) => {e.target === e.currentTarget && closeEditMode()}}
+    <div
+      role="dialog"
+      aria-labelledby="editTask"
+      onClick={(e) => {
+        e.target === e.currentTarget && closeEditMode();
+      }}
     >
       <form className="todo" onSubmit={handleFormSubmit}>
         <div className="wrapper">
@@ -43,15 +45,16 @@ const EditForm = ({ editedTask, updateTask, closeEditMode }) => {
             placeholder="Update task"
           />
           <label htmlFor="editTask" className="label">
-            Enter task
+            Введите задачу
           </label>
         </div>
 
-        <button 
-        className="btn" 
-        aria-label={`Confirm edited task to now read ${updatedTaskName}`} 
-        type="submit">
-          <CheckIcon strokeWidth={2} height={24} width={24}/>
+        <button
+          className="btn"
+          aria-label={`Confirm edited task to now read ${updatedTaskName}`}
+          type="submit"
+        >
+          <CheckIcon strokeWidth={2} height={24} width={24} />
         </button>
       </form>
     </div>
